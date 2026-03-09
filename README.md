@@ -14,6 +14,7 @@ Backend application for managing files and folders metadata, built with Java and
 - [Project Scope](#project-scope)
 - [Tech Stack](#tech-stack)
 - [Project Status](#project-status)
+- [CI](#ci)
 
 
 ---
@@ -54,3 +55,8 @@ The application will support:
 # Project Status
 
 Project is in the initial setup and architecture planning phase.
+
+---
+# CI
+
+The project uses GitHub Actions to automatically build the application and run Maven tests on every push and pull request.
