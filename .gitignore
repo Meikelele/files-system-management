@@ -1,0 +1,28 @@
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# Maven
+target/
+
+# Java
+*.class
+
+# Logs
+*.log
+
+# Local environment
+.env
+
+# Local Spring profiles / secrets
+src/main/resources/application-local.properties
+src/main/resources/application-local.yml
+src/main/resources/application-local.yaml
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# JVM crash logs
+hs_err_pid*
+replay_pid*
