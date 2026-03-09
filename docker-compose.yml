@@ -1,0 +1,35 @@
+# docker-compose.yml to taki przepis na uruchomienie kontenera
+
+# wersja składni dla docker compose - juz si enie pisze tego
+#version: 0.0.1
+
+# sekcja z usługami, kontenerami do uruchomienia
+services:
+
+  # nazwa uslugi, lokalna nazwa , etykieta
+  postgres:
+    # obraz bazy danych, mowi dockerowi uzyj obrazu postgresql w wersji 16
+    image: postgres:16-alpine
+
+    # ustawiam nazwe nazwa kontenera
+    container_name: files-manager-postgres
+
+    # kilka zmiennych srodowiskowych
+    environment:
+      POSTGRES_DB: files_manager
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+
+    # mapowanie portow, przez ktore mzona gadac z usluga
+    # polacz port 5432 na moim komputerze z portem 5432 wewnatrz kontenera
+    ports:
+      - "5432:5432"
+
+    # miejsce gdzie pliki beda przechowywane
+    # miejsce na trwale dane, bez tego za kazdym razem nowa baza
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+# tutaj nazywam wlasne wolumeny czyli magazyny na trzymanie danych
+volumes:
+  postgres_data:
