@@ -1,0 +1,38 @@
+# ustawienia dla springa
+spring:
+  application:
+    name: files-manager
+
+  # sekcja z konfiguracja dla bazy danych
+  datasource:
+
+    # adres do polaczenia sie z baza danych (kontener)
+    url: jdbc:postgresql://localhost:5432/files_manager
+
+    # username i password zeby uzyskac dostep do bazy danych (to jest w docker-compose dla PostgreSQL)
+    username: postgres
+    password: postgres
+
+    # driver czyli tłumacz miedzy java a PostgreSQL
+    driver-class-name: org.postgresql.Driver
+
+  # ustawienia dla JPA/Hibernate
+  # JPA - zasady ruchu drogowego
+  # Hibernate - konkretny samochód
+  jpa:
+    hibernate:
+      # jak zmienie w kodzie model bazy to uaktualnij w postgres
+      ddl-auto: update
+
+    # pokazuj SQL w logach
+    show-sql: true
+
+    # tutaj ladniejsze foramtowanie dla SQL w logach
+    properties:
+      hibernate:
+        format_sql: true
+
+# ustawienia serwera paliakcji
+server:
+  # apliakcja springboot bedzie dzialac na porcie 8080
+  port: 8080
