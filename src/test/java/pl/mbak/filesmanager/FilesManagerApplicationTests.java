@@ -1,4 +1,4 @@
-package pl.mbak.filessystem.files_manager;
+package pl.mbak.filesmanager;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,4 +1,4 @@
-package pl.mbak.filessystem.files_manager;
+package pl.mbak.filesmanager;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
