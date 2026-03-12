@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import pl.mbak.filesmanager.dto.CreateFolderRequest;
+import pl.mbak.filesmanager.exception.ResourceNotFoundException;
 import pl.mbak.filesmanager.model.Folder;
 import pl.mbak.filesmanager.service.FolderService;
 
@@ -40,7 +41,7 @@ public class FolderController {
     // wyciaga id z URL
     public Folder getFolderById(@PathVariable Long id) {
         return folderService.getSpecificFolder(id).orElseThrow(
-                () -> new RuntimeException("Folder does not found!")
+                () -> new ResourceNotFoundException("Folder does not found!")
         );
     }
 

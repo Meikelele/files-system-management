@@ -3,6 +3,7 @@ package pl.mbak.filesmanager.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import pl.mbak.filesmanager.exception.ResourceNotFoundException;
 import pl.mbak.filesmanager.model.Folder;
 import pl.mbak.filesmanager.repository.FolderRepository;
 
@@ -26,7 +27,7 @@ public class FolderService {
         // jesli jest parent_id to user chce stworzyc podfolder
         if (parentId != null) {
             Folder parent = folderRepository.findById(parentId).orElseThrow(
-                    () -> new RuntimeException("Parent folder does not exist!")
+                    () -> new ResourceNotFoundException("Parent folder does not exist!")
             );
 
             folder.setParent(parent);
