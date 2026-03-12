@@ -1,10 +1,12 @@
 package pl.mbak.filesmanager.controller;
 
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import pl.mbak.filesmanager.dto.CreateFolderRequest;
 import pl.mbak.filesmanager.model.Folder;
 import pl.mbak.filesmanager.service.FolderService;
 
@@ -21,8 +23,10 @@ public class FolderController {
     @PostMapping // ta metoda obsluguje request HTTP na POST '/folders'
     @ResponseStatus(HttpStatus.CREATED) // zwraca kod HTTP jako 201 CREATED a nie 200 OK, bardziej szczegolowe
     // @RequestParam pobiera name z reuqestu np. POST /folders?name=Documents
-    public Folder createFolder(@RequestParam String name, @RequestParam(required = false) Long parentId) {
-        return folderService.createFolder(name, parentId);
+    // @Valid - uruchom walidacje obiektu przed wejscie do metody
+    // @RequestBody - wez JSONz body requestu i zamien na obiekt Javaco
+    public Folder createFolder(@Valid @RequestBody CreateFolderRequest request) {
+        return folderService.createFolder(request.getName(), request.getParentId());
     }
 
 
