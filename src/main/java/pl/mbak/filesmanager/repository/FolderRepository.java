@@ -11,5 +11,6 @@ public interface FolderRepository extends JpaRepository<Folder, Long> {
 
     // Optional a nie Folder jako typ zwracany, bo szukany folder moze nie istnieć
     Optional<Folder> findByName(String name);
+    Optional<Folder> findById(String name);
 
 }

@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import pl.mbak.filesmanager.dto.CreateFolderRequest;
+import pl.mbak.filesmanager.dto.FolderResponse;
 import pl.mbak.filesmanager.exception.ResourceNotFoundException;
 import pl.mbak.filesmanager.model.Folder;
 import pl.mbak.filesmanager.service.FolderService;
@@ -26,23 +27,22 @@ public class FolderController {
     // @RequestParam pobiera name z reuqestu np. POST /folders?name=Documents
     // @Valid - uruchom walidacje obiektu przed wejscie do metody
     // @RequestBody - wez JSONz body requestu i zamien na obiekt Javaco
-    public Folder createFolder(@Valid @RequestBody CreateFolderRequest request) {
+    public FolderResponse createFolder(@Valid @RequestBody CreateFolderRequest request) {
+
         return folderService.createFolder(request.getName(), request.getParentId());
     }
 
 
     @GetMapping
-    public List<Folder> getAllFolders() {
+    public List<FolderResponse> getAllFolders() {
         return folderService.getAllFolders();
     }
 
     @GetMapping("/{id}")
     // @PathVariable pobiera id ze sciezki np. GET /folders/5
     // wyciaga id z URL
-    public Folder getFolderById(@PathVariable Long id) {
-        return folderService.getSpecificFolder(id).orElseThrow(
-                () -> new ResourceNotFoundException("Folder does not found!")
-        );
+    public FolderResponse getFolderById(@PathVariable Long id) {
+        return folderService.getSpecificFolder(id);
     }
 
 
