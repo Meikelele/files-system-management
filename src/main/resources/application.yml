@@ -36,3 +36,12 @@ spring:
 server:
   # apliakcja springboot bedzie dzialac na porcie 8080
   port: 8080
+
+# konfiguracja dla dokumentacji API
+springdoc:
+  # generowanie opisow dla API
+  api-docs:
+    path: /api-docs
+  # wystawianie Swaggera UI
+  swagger-ui:
+    path: /swagger-ui
