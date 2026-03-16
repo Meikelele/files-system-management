@@ -35,4 +35,8 @@ public class Folder {
     @JsonManagedReference // tę strone traktuj jako glowna przy serializacji
     // to lista dzieci dla danego folderu
     private List<Folder> children = new ArrayList<>();
+
+    @OneToMany(mappedBy = "folder")
+    // 'mappedBy' bo wlasciciel relacji jest w encji File
+    private List<ManagedFile> files = new ArrayList<>();
 }
