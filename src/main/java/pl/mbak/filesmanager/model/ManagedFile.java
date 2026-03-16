@@ -21,7 +21,7 @@ public class ManagedFile {
 
     // rozmiar pliku
     @Column(nullable = false)
-    private Integer sizeInBytes;
+    private Long sizeInBytes;
 
     @ManyToOne // wiele plikow moze byc w folderze
     @JoinColumn(name = "folder_id", nullable = false)
