@@ -6,7 +6,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter
-@Setter
 @AllArgsConstructor
 @Schema(description = "Response for global statistics")
 public class GlobalStatisticsResponse {
@@ -18,7 +17,7 @@ public class GlobalStatisticsResponse {
     private Long totalFiles;
 
     @Schema(description = "Size of all files")
-    private Long totalSize;
+    private Long totalSizeInBytes;
 
     @Schema(description = "Average file size")
     private Double avgFileSize;
