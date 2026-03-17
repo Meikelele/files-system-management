@@ -30,6 +30,27 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
+  # nazwa udlugi, moja nazwa
+  pgadmin:
+
+    # obraz z DockerHub
+    image: dpage/pgadmin4
+
+    # zmienne srodowiskowe
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@example.com
+      PGADMIN_DEFAULT_PASSWORD: password
+
+    # mapowanie portow
+    ports:
+      # 5050 moj port na kompie, port wewnatrz kontenera
+      # port 5050 na moim komputerze idzie na port 80 (domyslny pgAdmin nasluchuje na tym)
+      - "5050:80"
+
+    # w jakiej kolejnosci kontenery maja sie uruchamiac
+    depends_on:
+      - postgres
+
 # tutaj nazywam wlasne wolumeny czyli magazyny na trzymanie danych
 volumes:
   postgres_data:
